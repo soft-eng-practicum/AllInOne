@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F8FADD941AA8051900755D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FADD931AA8051900755D4F /* AppDelegate.swift */; };
+		F8FADD961AA8051900755D4F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FADD951AA8051900755D4F /* SearchViewController.swift */; };
+		F8FADD991AA8051900755D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8FADD971AA8051900755D4F /* Main.storyboard */; };
+		F8FADD9B1AA8051900755D4F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8FADD9A1AA8051900755D4F /* Images.xcassets */; };
+		F8FADD9E1AA8051900755D4F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8FADD9C1AA8051900755D4F /* LaunchScreen.xib */; };
+		F8FADDAA1AA8051900755D4F /* AllInOneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FADDA91AA8051900755D4F /* AllInOneTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F8FADDA41AA8051900755D4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8FADD861AA8051900755D4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8FADD8D1AA8051900755D4F;
+			remoteInfo = AllInOne;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F8FADD8E1AA8051900755D4F /* AllInOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllInOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8FADD921AA8051900755D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8FADD931AA8051900755D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F8FADD951AA8051900755D4F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F8FADD981AA8051900755D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F8FADD9A1AA8051900755D4F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F8FADD9D1AA8051900755D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F8FADDA31AA8051900755D4F /* AllInOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllInOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8FADDA81AA8051900755D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8FADDA91AA8051900755D4F /* AllInOneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllInOneTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8FADD8B1AA8051900755D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8FADDA01AA8051900755D4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F8FADD851AA8051900755D4F = {
+			isa = PBXGroup;
+			children = (
+				F8FADD901AA8051900755D4F /* AllInOne */,
+				F8FADDA61AA8051900755D4F /* AllInOneTests */,
+				F8FADD8F1AA8051900755D4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8FADD8F1AA8051900755D4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8FADD8E1AA8051900755D4F /* AllInOne.app */,
+				F8FADDA31AA8051900755D4F /* AllInOneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8FADD901AA8051900755D4F /* AllInOne */ = {
+			isa = PBXGroup;
+			children = (
+				F8FADD931AA8051900755D4F /* AppDelegate.swift */,
+				F8FADD951AA8051900755D4F /* SearchViewController.swift */,
+				F8FADD971AA8051900755D4F /* Main.storyboard */,
+				F8FADD9A1AA8051900755D4F /* Images.xcassets */,
+				F8FADD9C1AA8051900755D4F /* LaunchScreen.xib */,
+				F8FADD911AA8051900755D4F /* Supporting Files */,
+			);
+			path = AllInOne;
+			sourceTree = "<group>";
+		};
+		F8FADD911AA8051900755D4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8FADD921AA8051900755D4F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8FADDA61AA8051900755D4F /* AllInOneTests */ = {
+			isa = PBXGroup;
+			children = (
+				F8FADDA91AA8051900755D4F /* AllInOneTests.swift */,
+				F8FADDA71AA8051900755D4F /* Supporting Files */,
+			);
+			path = AllInOneTests;
+			sourceTree = "<group>";
+		};
+		F8FADDA71AA8051900755D4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8FADDA81AA8051900755D4F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F8FADD8D1AA8051900755D4F /* AllInOne */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8FADDAD1AA8051900755D4F /* Build configuration list for PBXNativeTarget "AllInOne" */;
+			buildPhases = (
+				F8FADD8A1AA8051900755D4F /* Sources */,
+				F8FADD8B1AA8051900755D4F /* Frameworks */,
+				F8FADD8C1AA8051900755D4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AllInOne;
+			productName = AllInOne;
+			productReference = F8FADD8E1AA8051900755D4F /* AllInOne.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8FADDA21AA8051900755D4F /* AllInOneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8FADDB01AA8051900755D4F /* Build configuration list for PBXNativeTarget "AllInOneTests" */;
+			buildPhases = (
+				F8FADD9F1AA8051900755D4F /* Sources */,
+				F8FADDA01AA8051900755D4F /* Frameworks */,
+				F8FADDA11AA8051900755D4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8FADDA51AA8051900755D4F /* PBXTargetDependency */,
+			);
+			name = AllInOneTests;
+			productName = AllInOneTests;
+			productReference = F8FADDA31AA8051900755D4F /* AllInOneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8FADD861AA8051900755D4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "All in one";
+				TargetAttributes = {
+					F8FADD8D1AA8051900755D4F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					F8FADDA21AA8051900755D4F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = F8FADD8D1AA8051900755D4F;
+					};
+				};
+			};
+			buildConfigurationList = F8FADD891AA8051900755D4F /* Build configuration list for PBXProject "AllInOne" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F8FADD851AA8051900755D4F;
+			productRefGroup = F8FADD8F1AA8051900755D4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8FADD8D1AA8051900755D4F /* AllInOne */,
+				F8FADDA21AA8051900755D4F /* AllInOneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F8FADD8C1AA8051900755D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8FADD991AA8051900755D4F /* Main.storyboard in Resources */,
+				F8FADD9E1AA8051900755D4F /* LaunchScreen.xib in Resources */,
+				F8FADD9B1AA8051900755D4F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8FADDA11AA8051900755D4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8FADD8A1AA8051900755D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8FADD961AA8051900755D4F /* SearchViewController.swift in Sources */,
+				F8FADD941AA8051900755D4F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8FADD9F1AA8051900755D4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8FADDAA1AA8051900755D4F /* AllInOneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F8FADDA51AA8051900755D4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8FADD8D1AA8051900755D4F /* AllInOne */;
+			targetProxy = F8FADDA41AA8051900755D4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F8FADD971AA8051900755D4F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8FADD981AA8051900755D4F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F8FADD9C1AA8051900755D4F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8FADD9D1AA8051900755D4F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F8FADDAB1AA8051900755D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F8FADDAC1AA8051900755D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F8FADDAE1AA8051900755D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = AllInOne/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F8FADDAF1AA8051900755D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = AllInOne/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F8FADDB11AA8051900755D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AllInOneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AllInOne.app/AllInOne";
+			};
+			name = Debug;
+		};
+		F8FADDB21AA8051900755D4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AllInOneTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AllInOne.app/AllInOne";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F8FADD891AA8051900755D4F /* Build configuration list for PBXProject "AllInOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8FADDAB1AA8051900755D4F /* Debug */,
+				F8FADDAC1AA8051900755D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8FADDAD1AA8051900755D4F /* Build configuration list for PBXNativeTarget "AllInOne" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8FADDAE1AA8051900755D4F /* Debug */,
+				F8FADDAF1AA8051900755D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8FADDB01AA8051900755D4F /* Build configuration list for PBXNativeTarget "AllInOneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8FADDB11AA8051900755D4F /* Debug */,
+				F8FADDB21AA8051900755D4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F8FADD861AA8051900755D4F /* Project object */;
+}
