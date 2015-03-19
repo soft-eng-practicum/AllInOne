@@ -52,7 +52,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         hasSearched = true
         if searchBar.text != "lady gaga" {
-            for i in 0...2 {
+            for i in 0...5 {
                 let searchOutput = SearchOutput()
                 searchOutput.name = String(format: "This %d result is not real for", i)
                 searchOutput.NameOfArtist = searchBar.text
@@ -60,7 +60,7 @@ extension SearchViewController: UISearchBarDelegate {
             }
         }
         tableView.reloadData()
-        println("The fake search text is: '\(searchBar.text)'")
+        println("The simulated search text is: '\(searchBar.text)'")
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
