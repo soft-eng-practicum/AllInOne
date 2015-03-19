@@ -13,6 +13,9 @@
 		EA3957E41AB5EBDA000EA645 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3957E31AB5EBDA000EA645 /* Images.xcassets */; };
 		EA3957E71AB5EBDA000EA645 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3957E51AB5EBDA000EA645 /* LaunchScreen.xib */; };
 		EA3957F31AB5EBDA000EA645 /* AllInOneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3957F21AB5EBDA000EA645 /* AllInOneTests.swift */; };
+		EA3957FD1ABA97AF000EA645 /* SearchOutputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3957FC1ABA97AF000EA645 /* SearchOutputCell.xib */; };
+		EA3957FF1ABAA307000EA645 /* SearchOutputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */; };
+		EA3958011ABAAF77000EA645 /* NothingThereCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3958001ABAAF77000EA645 /* NothingThereCell.xib */; };
 		F8B4118B1ABA6A9100EA750E /* SearchOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		EA3957EC1AB5EBDA000EA645 /* AllInOneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllInOneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3957F11AB5EBDA000EA645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3957F21AB5EBDA000EA645 /* AllInOneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllInOneTests.swift; sourceTree = "<group>"; };
+		EA3957FC1ABA97AF000EA645 /* SearchOutputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOutputCell.xib; sourceTree = "<group>"; };
+		EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOutputCell.swift; sourceTree = "<group>"; };
+		EA3958001ABAAF77000EA645 /* NothingThereCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingThereCell.xib; sourceTree = "<group>"; };
 		F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +92,9 @@
 				EA3957E51AB5EBDA000EA645 /* LaunchScreen.xib */,
 				F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */,
 				EA3957DA1AB5EBDA000EA645 /* Supporting Files */,
+				EA3957FC1ABA97AF000EA645 /* SearchOutputCell.xib */,
+				EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */,
+				EA3958001ABAAF77000EA645 /* NothingThereCell.xib */,
 			);
 			path = AllInOne;
 			sourceTree = "<group>";
@@ -195,8 +204,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3957FD1ABA97AF000EA645 /* SearchOutputCell.xib in Resources */,
 				EA3957E21AB5EBDA000EA645 /* Main.storyboard in Resources */,
 				EA3957E71AB5EBDA000EA645 /* LaunchScreen.xib in Resources */,
+				EA3958011ABAAF77000EA645 /* NothingThereCell.xib in Resources */,
 				EA3957E41AB5EBDA000EA645 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA3957FF1ABAA307000EA645 /* SearchOutputCell.swift in Sources */,
 				EA3957DF1AB5EBDA000EA645 /* SearchViewController.swift in Sources */,
 				F8B4118B1ABA6A9100EA750E /* SearchOutput.swift in Sources */,
 				EA3957DD1AB5EBDA000EA645 /* AppDelegate.swift in Sources */,
