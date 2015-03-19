@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  AllInOne
 //
-//  Created by Sichong Huang on 15/3/4.
-//  Copyright (c) 2015年 All in one. All rights reserved.
+//  Created by Tony on 3/15/15.
+//  Copyright (c) 2015 Tony. All rights reserved.
 //
 
 import UIKit
