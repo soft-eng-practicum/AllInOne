@@ -5,14 +5,14 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    
+   
     var searchOutputs = [SearchOutput]()
     var hasSearched = false
     
-  
+    
     struct TableViewCellIdentifiers {
         static let searchOutputCell = "SearchOutputCell"
-        static let nothingThereCell = "NothingThereCell"
+        static let NothingThereCell = "NothingThereCell"
     }
     
    
@@ -26,21 +26,214 @@ class SearchViewController: UIViewController {
         tableView.rowHeight = 80
         searchBar.becomeFirstResponder()
         
-      
+        
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchOutputCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchOutputCell)
         
-        cellNib = UINib(nibName: TableViewCellIdentifiers.nothingThereCell, bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingThereCell)
+        cellNib = UINib(nibName: TableViewCellIdentifiers.NothingThereCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.NothingThereCell)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+        
     }
     
     
-
+    // Apple API Request
+    func urlWithSearchText(searchText: String) -> NSURL {
+        let dealSpecialText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let urlString = String(format: "http://itunes.apple.com/search?term=%@", dealSpecialText)
+        //Dealling with special text that user types in the search bar
+        let url = NSURL(string: urlString)
+        return url!
+    }
+    
+    //Call to String method and return a new string object
+    func performStoreRequestWithURL(url: NSURL) -> String? {
+        var error : NSError?
+        if let OutputString = String(contentsOfURL: url, encoding: NSUTF8StringEncoding, error: &error) {
+            return OutputString
+        } else if let error = error {
+            println("Download Error: \(error)")
+        } else {
+            println("Unknown Download Error")
+        }
+        return nil
+    }
+    
+    // parse JSON using IOS JSON parser, coverting JSON search output to a Dictionary
+    func parseJSON(jsonString: String) -> [String: AnyObject]? {
+        if let output = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+            var error: NSError?
+            if let json = NSJSONSerialization.JSONObjectWithData(output, options: NSJSONReadingOptions(0), error: &error) as? [String: AnyObject] {
+                return json
+            } else if let error = error {
+                println("JSON Error: '\(error)'")
+            } else {
+                println("Unknown JSON Error")
+            }
+        }
+        return nil
+    }
+    
+    // Parsing Dictionary
+    func parseDictionary(dictionary: [String: AnyObject]) -> [SearchOutput]{
+        var searchOutputs = [SearchOutput]()
+        
+        if let array: AnyObject = dictionary["results"] {
+            for OutputDict in array as [AnyObject] {
+                if let OutputDict = OutputDict as? [String: AnyObject] {
+                    var searchOutput: SearchOutput?
+                    
+                    if let wrapperType = OutputDict["wrapperType"] as? NSString {
+                        switch wrapperType {
+                        case "track":
+                            searchOutput = parseTrack(OutputDict)
+                        case "audiobook":
+                            searchOutput = parseAudioBook(OutputDict)
+                        case "software":
+                            searchOutput = parseSoftware(OutputDict)
+                        default:
+                            break
+                        }
+                    } else if let kind = OutputDict["kind"] as? NSString {
+                        if kind == "ebook" {
+                            searchOutput = parseEBook(OutputDict)
+                        }
+                    }
+                    
+                    if let Output = searchOutput {
+                        searchOutputs.append(Output)
+                    }
+                } else {
+                    println("Expected a dictionary")
+                }
+            }
+        } else {
+            println("Expected 'Outputs' array")
+        }
+        return searchOutputs
+    }
+    
+    // Parse API return data
+    func parseTrack(dictionary: [String: AnyObject]) -> SearchOutput {
+        let searchOutput = SearchOutput()
+        
+        searchOutput.name = dictionary["trackName"] as NSString
+        searchOutput.artistName = dictionary["artistName"] as NSString
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
+        searchOutput.storeURL = dictionary["trackViewUrl"] as NSString
+        searchOutput.kind = dictionary["kind"] as NSString
+        searchOutput.currency = dictionary["currency"] as NSString
+        
+        if let price = dictionary["trackPrice"] as? NSNumber {
+            searchOutput.price = Double(price)
+        }
+        
+        if let genre = dictionary["primaryGenreName"] as? NSString {
+            searchOutput.genre = genre
+        }
+        
+        return searchOutput
+    }
+    
+    func parseAudioBook(dictionary: [String: AnyObject]) -> SearchOutput {
+        let searchOutput = SearchOutput()
+        searchOutput.name = dictionary["collectionName"] as NSString
+        searchOutput.artistName = dictionary["artistName"] as NSString
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
+        searchOutput.storeURL = dictionary["collectionViewUrl"] as NSString
+        searchOutput.kind = "audiobook"
+        searchOutput.currency = dictionary["currency"] as NSString
+        
+        if let price = dictionary["collectionPrice"] as? NSNumber {
+            searchOutput.price = Double(price)
+        }
+        
+        if let genre = dictionary["primaryGenreName"] as? NSString {
+            searchOutput.genre = genre
+        }
+        return searchOutput
+    }
+    
+    func parseSoftware(dictionary: [String: AnyObject]) -> SearchOutput {
+        let searchOutput = SearchOutput()
+        searchOutput.name = dictionary["trackName"] as NSString
+        searchOutput.artistName = dictionary["artistName"] as NSString
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
+        searchOutput.artworkURL100 = dictionary["artworkURL100"] as NSString
+        searchOutput.storeURL = dictionary["trackViewIUrl"] as NSString
+        searchOutput.kind = dictionary["kind"] as NSString
+        searchOutput.currency = dictionary["currency"] as NSString
+        
+        if let price = dictionary["price"] as? NSNumber {
+            searchOutput.price = Double(price)
+        }
+        
+        if let genre = dictionary["primaryGenreName"] as? NSString {
+            searchOutput.genre = genre
+        }
+        
+        return searchOutput
+    }
+    
+    func parseEBook(dictionary: [String: AnyObject]) -> SearchOutput {
+        let searchOutput = SearchOutput()
+        searchOutput.name = dictionary["trackName"] as NSString
+        searchOutput.artistName = dictionary["artistName"] as NSString
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
+        searchOutput.storeURL = dictionary["trackViewUrl"] as NSString
+        searchOutput.kind = dictionary["kind"] as NSString
+        searchOutput.currency = dictionary["currency"] as NSString
+        
+        if let price = dictionary["price"] as? NSNumber {
+            searchOutput.price = Double(price)
+        }
+        
+        if let genres: AnyObject = dictionary["genres"] {
+            searchOutput.genre = ", ".join(genres as [String])
+        }
+        
+        return searchOutput
+    }
+    
+    
+    //return data: Kind
+    func kindForDisplay(kind: String) -> String {
+        switch kind {
+        case "album": return "Album"
+        case "audiobook": return "Audio Book"
+        case "book": return "Book"
+        case "ebook": return "E-Book"
+        case "feature-movie": return "Movie"
+        case "music-video": return "MusicVideo"
+        case "podcast": return "Podcast"
+        case "software": return "App"
+        case "song": return "Song"
+        case "tv-episode": return "TV Episode"
+        default: return kind
+        }
+    }
+    
+    // API Request Error Handling
+    func checkNetworkError() {
+        let alert = UIAlertController(
+            title: "Oh no",
+            message: "There was somthing about the connection to the server. Please try again.",
+            preferredStyle: .Alert
+        )
+        
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
     
 }
 
@@ -48,19 +241,27 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchOutputs = [SearchOutput]()
-        searchBar.resignFirstResponder()
-        hasSearched = true
-        if searchBar.text != "lady gaga" {
-            for i in 0...5 {
-                let searchOutput = SearchOutput()
-                searchOutput.name = String(format: "This %d result is not real for", i)
-                searchOutput.NameOfArtist = searchBar.text
-                searchOutputs.append(searchOutput)
+        if !searchBar.text.isEmpty {
+            searchBar.resignFirstResponder()
+            hasSearched = true
+            searchOutputs = [SearchOutput]()
+            let url = urlWithSearchText(searchBar.text)
+            println("URL: '\(url)'")
+            
+            //take NSURL object as a parameter and return JSON data
+            if let jsonString = performStoreRequestWithURL(url) {
+                println("JSON string have received'\(jsonString)'")
+                if let dictionary = parseJSON(jsonString) {
+                    println("Dictionary \(dictionary)")
+                    searchOutputs = parseDictionary(dictionary)
+                    searchOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                   
+                    tableView.reloadData()
+                    return
+                }
             }
+            checkNetworkError()
         }
-        tableView.reloadData()
-        println("The simulated search text is: '\(searchBar.text)'")
     }
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
@@ -83,12 +284,16 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if searchOutputs.count == 0 {
-            return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingThereCell, forIndexPath: indexPath) as UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.NothingThereCell, forIndexPath: indexPath) as UITableViewCell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchOutputCell, forIndexPath: indexPath) as SearchOutputCell
             let searchOutput = searchOutputs[indexPath.row]
             cell.nameLabel.text = searchOutput.name
-            cell.artistNameLabel.text = searchOutput.NameOfArtist
+            if searchOutput.artistName.isEmpty {
+                cell.artistNameLabel.text = "No idea"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchOutput.artistName, searchOutput.kind)
+            }
             return cell
         }
     }
