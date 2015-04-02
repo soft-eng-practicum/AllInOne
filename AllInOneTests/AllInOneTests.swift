@@ -1,6 +1,7 @@
 
 
 import UIKit
+
 import XCTest
 
 
@@ -32,16 +33,6 @@ class AllInOneTests: XCTestCase {
     }
     
     
-    
-    //unit test -to see if the view loads
-        func testViewDidLoad()
-        {
-            
-            let a = SearchViewController()
-            
-            
-            XCTAssertNotNil(a.view, "There is no view loading")
-        }
     }
 
 
