@@ -15,6 +15,7 @@
 		EA3957FF1ABAA307000EA645 /* SearchOutputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */; };
 		EA3958011ABAAF77000EA645 /* NothingThereCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3958001ABAAF77000EA645 /* NothingThereCell.xib */; };
 		F36660C01ABB5B0900B1AA9B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3957DE1AB5EBDA000EA645 /* SearchViewController.swift */; };
+		F84D55011ACD791E00A9E5A7 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84D55001ACD791E00A9E5A7 /* LoadingCell.xib */; };
 		F8B4118B1ABA6A9100EA750E /* SearchOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		EA3957FC1ABA97AF000EA645 /* SearchOutputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOutputCell.xib; sourceTree = "<group>"; };
 		EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOutputCell.swift; sourceTree = "<group>"; };
 		EA3958001ABAAF77000EA645 /* NothingThereCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingThereCell.xib; sourceTree = "<group>"; };
+		F84D55001ACD791E00A9E5A7 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				F8B4118A1ABA6A9100EA750E /* SearchOutput.swift */,
 				EA3957DA1AB5EBDA000EA645 /* Supporting Files */,
 				EA3957FC1ABA97AF000EA645 /* SearchOutputCell.xib */,
+				F84D55001ACD791E00A9E5A7 /* LoadingCell.xib */,
 				EA3957FE1ABAA307000EA645 /* SearchOutputCell.swift */,
 				EA3958001ABAAF77000EA645 /* NothingThereCell.xib */,
 			);
@@ -205,6 +208,7 @@
 			files = (
 				EA3957FD1ABA97AF000EA645 /* SearchOutputCell.xib in Resources */,
 				EA3957E21AB5EBDA000EA645 /* Main.storyboard in Resources */,
+				F84D55011ACD791E00A9E5A7 /* LoadingCell.xib in Resources */,
 				EA3957E71AB5EBDA000EA645 /* LaunchScreen.xib in Resources */,
 				EA3958011ABAAF77000EA645 /* NothingThereCell.xib in Resources */,
 				EA3957E41AB5EBDA000EA645 /* Images.xcassets in Resources */,
