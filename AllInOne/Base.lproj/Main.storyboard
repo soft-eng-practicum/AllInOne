@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,6 +25,27 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="FCb-6A-P09"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXr-7S-4tX">
+                                <rect key="frame" x="13" y="64" width="574" height="44"/>
+                                <items>
+                                    <navigationItem id="MTP-vm-0eA">
+                                        <nil key="title"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="VYe-Kz-iUm">
+                                            <rect key="frame" x="137" y="7" width="300" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-books"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="b4b-9J-XGH"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Oeh-0B-vB1">
                                 <rect key="frame" x="16" y="20" width="568" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -35,6 +56,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="xXr-7S-4tX" secondAttribute="trailing" constant="-3" id="0HM-Co-oVM"/>
                             <constraint firstItem="Uok-WK-qIy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="EsH-xS-N9Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oeh-0B-vB1" secondAttribute="trailing" id="G15-N0-QVk"/>
                             <constraint firstItem="Oeh-0B-vB1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Ga4-DH-BUo"/>
@@ -43,7 +65,9 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Uok-WK-qIy" secondAttribute="bottom" id="Nsa-5u-YDt"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Uok-WK-qIy" secondAttribute="bottom" id="Phs-iu-nqZ"/>
                             <constraint firstItem="Uok-WK-qIy" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="SvK-hU-qwU"/>
+                            <constraint firstItem="xXr-7S-4tX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-3" id="Tpa-nM-2uB"/>
                             <constraint firstItem="Oeh-0B-vB1" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Vdw-a0-HoB"/>
+                            <constraint firstItem="xXr-7S-4tX" firstAttribute="top" secondItem="Oeh-0B-vB1" secondAttribute="bottom" id="WHe-8i-dPl"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Uok-WK-qIy" secondAttribute="bottom" id="Win-X8-Qqb"/>
                             <constraint firstItem="Uok-WK-qIy" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="c3N-Fu-YJh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uok-WK-qIy" secondAttribute="trailing" id="kVU-Tf-80s"/>
@@ -54,6 +78,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Oeh-0B-vB1" id="JOm-sX-c7n"/>
+                        <outlet property="segmentedControl" destination="VYe-Kz-iUm" id="YWr-vy-Zsx"/>
                         <outlet property="tableView" destination="Uok-WK-qIy" id="TfU-xj-MU2"/>
                     </connections>
                 </viewController>
