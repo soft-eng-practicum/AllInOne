@@ -12,7 +12,7 @@ Instruction For Test Drive “All In One”
 
 2.	Update the system of your mac to most recent version  OS X Yosemite Version 10.10
 
-3.	Update the Xcode to most recent version Xcode 6.1
+3.	Update the Xcode to most recent version Xcode 6.3 (we are using swift 1.2 for programming, version below 6.3 will not compile due to syntax difference!!!)
 
 4.	Make sure to meet the requirements listed above (2,3), any failure of doing either one of them may result in running app incorrectly or showing error in Xcode.
 
