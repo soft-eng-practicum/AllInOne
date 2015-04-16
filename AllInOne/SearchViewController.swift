@@ -86,7 +86,7 @@ class SearchViewController: UIViewController {
         var searchOutputs = [SearchOutput]()
         
         if let array: AnyObject = dictionary["results"] {
-            for OutputDict in array as [AnyObject] {
+            for OutputDict in array as! [AnyObject] {
                 if let OutputDict = OutputDict as? [String: AnyObject] {
                     var searchOutput: SearchOutput?
                     
@@ -124,20 +124,20 @@ class SearchViewController: UIViewController {
     func parseTrack(dictionary: [String: AnyObject]) -> SearchOutput {
         let searchOutput = SearchOutput()
         
-        searchOutput.name = dictionary["trackName"] as NSString
-        searchOutput.artistName = dictionary["artistName"] as NSString
-        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
-        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
-        searchOutput.storeURL = dictionary["trackViewUrl"] as NSString
-        searchOutput.kind = dictionary["kind"] as NSString
-        searchOutput.currency = dictionary["currency"] as NSString
+        searchOutput.name = dictionary["trackName"] as! NSString as String
+        searchOutput.artistName = dictionary["artistName"] as! NSString as String
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as! NSString as String
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as! NSString as String
+        searchOutput.storeURL = dictionary["trackViewUrl"] as! NSString as String
+        searchOutput.kind = dictionary["kind"] as! NSString as String
+        searchOutput.currency = dictionary["currency"] as! NSString as String
         
         if let price = dictionary["trackPrice"] as? NSNumber {
             searchOutput.price = Double(price)
         }
         
         if let genre = dictionary["primaryGenreName"] as? NSString {
-            searchOutput.genre = genre
+            searchOutput.genre = genre as String
         }
         
         return searchOutput
@@ -145,40 +145,40 @@ class SearchViewController: UIViewController {
     
     func parseAudioBook(dictionary: [String: AnyObject]) -> SearchOutput {
         let searchOutput = SearchOutput()
-        searchOutput.name = dictionary["collectionName"] as NSString
-        searchOutput.artistName = dictionary["artistName"] as NSString
-        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
-        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
-        searchOutput.storeURL = dictionary["collectionViewUrl"] as NSString
+        searchOutput.name = dictionary["collectionName"] as! NSString as String
+        searchOutput.artistName = dictionary["artistName"] as! NSString as String
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as! NSString as String
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as! NSString as String
+        searchOutput.storeURL = dictionary["collectionViewUrl"] as! NSString as String
         searchOutput.kind = "audiobook"
-        searchOutput.currency = dictionary["currency"] as NSString
+        searchOutput.currency = dictionary["currency"] as! NSString as String
         
         if let price = dictionary["collectionPrice"] as? NSNumber {
             searchOutput.price = Double(price)
         }
         
         if let genre = dictionary["primaryGenreName"] as? NSString {
-            searchOutput.genre = genre
+            searchOutput.genre = genre as String
         }
         return searchOutput
     }
     
     func parseSoftware(dictionary: [String: AnyObject]) -> SearchOutput {
         let searchOutput = SearchOutput()
-        searchOutput.name = dictionary["trackName"] as NSString
-        searchOutput.artistName = dictionary["artistName"] as NSString
-        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
-        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
-        searchOutput.storeURL = dictionary["trackViewUrl"] as NSString
-        searchOutput.kind = dictionary["kind"] as NSString
-        searchOutput.currency = dictionary["currency"] as NSString
+        searchOutput.name = dictionary["trackName"] as! NSString as String
+        searchOutput.artistName = dictionary["artistName"] as! NSString as String
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as! NSString as String
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as! NSString as String
+        searchOutput.storeURL = dictionary["trackViewUrl"] as! NSString as String
+        searchOutput.kind = dictionary["kind"] as! NSString as String
+        searchOutput.currency = dictionary["currency"] as! NSString as String
         
         if let price = dictionary["price"] as? NSNumber {
             searchOutput.price = Double(price)
         }
         
         if let genre = dictionary["primaryGenreName"] as? NSString {
-            searchOutput.genre = genre
+            searchOutput.genre = genre as String
         }
         
         return searchOutput
@@ -186,20 +186,20 @@ class SearchViewController: UIViewController {
     
     func parseEBook(dictionary: [String: AnyObject]) -> SearchOutput {
         let searchOutput = SearchOutput()
-        searchOutput.name = dictionary["trackName"] as NSString
-        searchOutput.artistName = dictionary["artistName"] as NSString
-        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as NSString
-        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as NSString
-        searchOutput.storeURL = dictionary["trackViewUrl"] as NSString
-        searchOutput.kind = dictionary["kind"] as NSString
-        searchOutput.currency = dictionary["currency"] as NSString
+        searchOutput.name = dictionary["trackName"] as! NSString as String
+        searchOutput.artistName = dictionary["artistName"] as! NSString as String
+        searchOutput.artworkURL60 = dictionary["artworkUrl60"] as! NSString as String
+        searchOutput.artworkURL100 = dictionary["artworkUrl100"] as! NSString as String
+        searchOutput.storeURL = dictionary["trackViewUrl"] as! NSString as String
+        searchOutput.kind = dictionary["kind"] as! NSString as String
+        searchOutput.currency = dictionary["currency"] as! NSString as String
         
         if let price = dictionary["price"] as? NSNumber {
             searchOutput.price = Double(price)
         }
         
         if let genres: AnyObject = dictionary["genres"] {
-            searchOutput.genre = ", ".join(genres as [String])
+            searchOutput.genre = ", ".join(genres as! [String])
         }
         
         return searchOutput
@@ -221,7 +221,13 @@ class SearchViewController: UIViewController {
         
         presentViewController(alert, animated: true, completion: nil)
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowDetail" {
+      let controller = segue.destinationViewController as! DetailViewController
+      let indexPath = sender as! NSIndexPath
+      controller.searchResult = searchOutputs[indexPath.row]
+    }
+  }
    
     
     // Actions
@@ -312,16 +318,16 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if isLoading {
-            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath: indexPath) as! UITableViewCell
             
-            let spinner = cell.viewWithTag(100) as UIActivityIndicatorView
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
             spinner.startAnimating()
             
             return cell
         } else if searchOutputs.count == 0 {
-            return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.NothingThereCell, forIndexPath: indexPath) as UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.NothingThereCell, forIndexPath: indexPath) as! UITableViewCell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchOutputCell, forIndexPath: indexPath) as SearchOutputCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchOutputCell, forIndexPath: indexPath) as! SearchOutputCell
             let searchOutput = searchOutputs[indexPath.row]
             cell.configureForSearchOutput(searchOutput)
             return cell
@@ -334,6 +340,7 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+performSegueWithIdentifier("ShowDetail", sender: indexPath)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
