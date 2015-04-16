@@ -17,7 +17,7 @@ class AllInOneTests: XCTestCase {
     override func tearDown() {
         // This method is called after the invocation of each test method in the class.
         super.tearDown()
-    }
+    }		
     
     //unit test for testExample
     func testExample() {
