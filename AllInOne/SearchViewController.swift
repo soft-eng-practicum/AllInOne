@@ -26,6 +26,12 @@ class SearchViewController: UIViewController {
     
     //new
     var refreshControl:UIRefreshControl!
+    //new1
+    var musicOutputs = [SearchOutput]()
+    var softwareOutputs = [SearchOutput]()
+    var ebookOutputs = [SearchOutput]()
+    var defaultOutputs = [SearchOutput]()
+    var forceRefresh = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +64,8 @@ class SearchViewController: UIViewController {
     
     //new
     func refresh(sender:AnyObject){
+        //new1
+        forceRefresh = true
         performSearch()
     }
     
@@ -258,12 +266,46 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        //new1
+        forceRefresh = true
         performSearch()
     }
     
     func performSearch() {
         if !searchBar.text.isEmpty {
-            searchBar.resignFirstResponder()
+            
+            //new1
+            if (segmentedControl.selectedSegmentIndex == 1){
+                if (musicOutputs.count > 0 && forceRefresh == false) {
+                    searchBar.resignFirstResponder()
+                    searchOutputs = musicOutputs
+                    tableView.reloadData()
+                    return
+                }
+            } else if (segmentedControl.selectedSegmentIndex == 2){
+                if (softwareOutputs.count > 0 && forceRefresh == false) {
+                    searchBar.resignFirstResponder()
+                    searchOutputs = softwareOutputs
+                    tableView.reloadData()
+                    return
+                }
+            } else if (segmentedControl.selectedSegmentIndex == 3){
+                if (ebookOutputs.count > 0 && forceRefresh == false) {
+                    searchBar.resignFirstResponder()
+                    searchOutputs = ebookOutputs
+                    tableView.reloadData()
+                    return
+                }
+            } else {
+                if (defaultOutputs.count > 0 && forceRefresh == false) {
+                    searchBar.resignFirstResponder()
+                    searchOutputs = defaultOutputs
+                    tableView.reloadData()
+                    return
+                }
+            }
+            
+            
             
             dataTask?.cancel()
             isLoading = true
@@ -285,8 +327,28 @@ extension SearchViewController: UISearchBarDelegate {
                 } else if let httpResponse = response as? NSHTTPURLResponse {
                     if httpResponse.statusCode == 200 {
                         if let dictionary = self.parseJSON(data) {
+                            
+                            
                             self.searchOutputs = self.parseDictionary(dictionary)
                             self.searchOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                            
+                            //new1
+                            forceRefresh = false
+                            if (segmentedControl.selectedSegmentIndex == 1){
+                                self.musicOutputs = self.parseDictionary(dictionary)
+                                self.musicOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                            } else if (segmentedControl.selectedSegmentIndex == 2){
+                                self.softwareOutputs = self.parseDictionary(dictionary)
+                                self.softwareOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                            } else if (segmentedControl.selectedSegmentIndex == 3){
+                                self.ebookOutputs = self.parseDictionary(dictionary)
+                                self.ebookOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                            } else {
+                                self.defaultOutputs = self.parseDictionary(dictionary)
+                                self.defaultOutputs.sort { $0.name.localizedStandardCompare($1.name) == NSComparisonResult.OrderedAscending }
+                            }
+                            
+                            
                             
                             dispatch_async(dispatch_get_main_queue()) {
                                 self.isLoading = false
