@@ -18,11 +18,14 @@ class SearchViewController: UIViewController {
         static let loadingCell = "LoadingCell"
     }
     
-  
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    //new
+    var refreshControl:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,13 @@ class SearchViewController: UIViewController {
         
         cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
+        
+        //new
+        //pull to refresh
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(self.refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,6 +56,10 @@ class SearchViewController: UIViewController {
         
     }
     
+    //new
+    func refresh(sender:AnyObject){
+        performSearch()
+    }
     
     // Apple API Request
     func urlWithSearchText(searchText: String, category: Int) -> NSURL {
@@ -65,7 +79,7 @@ class SearchViewController: UIViewController {
         return url!
     }
     
-   
+    
     
     
     // parse JSON using IOS JSON parser, coverting JSON search output to a Dictionary
@@ -222,13 +236,13 @@ class SearchViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "ShowDetail" {
-      let controller = segue.destinationViewController as! DetailViewController
-      let indexPath = sender as! NSIndexPath
-      controller.searchResult = searchOutputs[indexPath.row]
+        if segue.identifier == "ShowDetail" {
+            let controller = segue.destinationViewController as! DetailViewController
+            let indexPath = sender as! NSIndexPath
+            controller.searchResult = searchOutputs[indexPath.row]
+        }
     }
-  }
-   
+    
     
     // Actions
     
@@ -340,7 +354,7 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-performSegueWithIdentifier("ShowDetail", sender: indexPath)
+        performSegueWithIdentifier("ShowDetail", sender: indexPath)
     }
     
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
