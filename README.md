@@ -1,4 +1,4 @@
-# iTunes
+# All In One
 project language: swift.
 project framwork: JSON.
 project platform: Xcode.
